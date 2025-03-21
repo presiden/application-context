@@ -1,5 +1,7 @@
 package com.prasidyo;
 
+import org.springframework.stereotype.Service;
+
 import jakarta.mail.Message;
 import jakarta.mail.Multipart;
 import jakarta.mail.Session;
@@ -9,6 +11,7 @@ import jakarta.mail.internet.MimeBodyPart;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
 
+@Service
 public class EmailService {
     private final Session session;
 

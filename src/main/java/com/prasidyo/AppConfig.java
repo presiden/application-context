@@ -56,8 +56,8 @@ public class AppConfig {
         });
     }
 
-    @Bean
-    public EmailService emailService(Session session) {
-        return new EmailService(session);
-    }
+    // @Bean
+    // public EmailService emailService(Session session) {
+    //     return new EmailService(session);
+    // }
 }
