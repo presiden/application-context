@@ -22,7 +22,7 @@
         <property name="title" value="Spring Framework Basics"/>
         <property name="author" ref="author2"/>
     </bean>
-    <bean id="mailSession" class="jakarta.mail.Session" factory-method="getInstance">
+    <!-- <bean id="mailSession" class="jakarta.mail.Session" factory-method="getInstance">
         <constructor-arg>
             <props>
                 <prop key="mail.smtp.auth">true</prop>
@@ -44,5 +44,5 @@
     </bean>
     <bean id="emailService" class="com.prasidyo.EmailService">
         <constructor-arg ref="mailSession"/>
-    </bean>
+    </bean> -->
 </beans>

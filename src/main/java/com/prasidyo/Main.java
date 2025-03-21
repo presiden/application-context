@@ -17,11 +17,11 @@ public class Main {
         System.out.println("Book Title: " + book.getTitle());
         System.out.println("Author Name: " + book.getAuthor().getName());
 
-        // EmailService emailService = (EmailService) context.getBean("emailService");
-        // try {
-        //     emailService.sendMail();
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }
+        EmailService emailService = (EmailService) context.getBean("emailService");
+        try {
+            emailService.sendMail();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

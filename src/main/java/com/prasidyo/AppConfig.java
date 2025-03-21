@@ -1,8 +1,18 @@
 package com.prasidyo;
 
+import java.util.Properties;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
+import jakarta.mail.Authenticator;
+import jakarta.mail.PasswordAuthentication;
+import jakarta.mail.Session;
+
+@ComponentScan("com.prasidyo")
+@Configuration
 public class AppConfig {
 
     @Bean
@@ -19,5 +29,35 @@ public class AppConfig {
         book.setTitle("Book 1");
         book.setAuthor(author);
         return book;
+    }
+
+    @Bean
+    public PasswordAuthentication passwordAuthentication() {
+        return new PasswordAuthentication("224cd838c5d6d2", "aff57fef7b08b0");
+    }
+
+    @Bean
+    public Properties properties() {
+        Properties prop = new Properties();
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true");
+        prop.put("mail.smtp.host", "sandbox.smtp.mailtrap.io");
+        prop.put("mail.smtp.port", "587");
+        return prop;
+    }   
+
+    @Bean
+    public Session mailSession(@Qualifier("properties") Properties properties, PasswordAuthentication passwordAuthentication) {
+        return Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return passwordAuthentication;
+            }
+        });
+    }
+
+    @Bean
+    public EmailService emailService(Session session) {
+        return new EmailService(session);
     }
 }

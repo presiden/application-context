@@ -1,11 +1,7 @@
 package com.prasidyo;
 
-import java.util.Properties;
-
-import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.Multipart;
-import jakarta.mail.PasswordAuthentication;
 import jakarta.mail.Session;
 import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
@@ -39,14 +35,14 @@ public class EmailService {
     }
     
    
-    private Session getSession() {
-        Session session = Session.getInstance(prop, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
-            }
-        });
-        return session;
-    }
+    // private Session getSession() {
+    //     Session session = Session.getInstance(prop, new Authenticator() {
+    //         @Override
+    //         protected PasswordAuthentication getPasswordAuthentication() {
+    //             return new PasswordAuthentication(username, password);
+    //         }
+    //     });
+    //     return session;
+    // }
 
 }
